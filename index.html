@@ -3,11 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Game</title>
+    <title>Water Quest - charity: water Game</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Welcome to the Charity Water Game Prototype</h1>
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen active">
+        <div class="logo">
+            <!-- Yellow circle with water drop icon placeholder -->
+            <div class="water-drop"></div>
+        </div>
+        <h1>Water Quest</h1>
+        <p class="tagline">Help provide clean water for everyone!</p>
+        <div class="instructions">
+            <ul>
+                <li>Click yellow jerry cans to collect clean water (+10 points)</li>
+                <li>Avoid brown jerry cans with dirty water (-5 points)</li>
+                <li>Watch out for storm clouds! They'll wash away points!</li>
+                <li>Build combos for bonus points</li>
+                <li>Help as many people as you can in 60 seconds!</li>
+            </ul>
+        </div>
+        <button id="start-button" class="button-primary">START GAME</button>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+        <div class="game-header">
+            <div class="stats-bar">
+                <div class="stat">Score: <span id="score">0</span></div>
+                <div class="stat">People Served: <span id="people-served">0</span></div>
+                <div class="stat">Time: <span id="timer">60</span>s</div>
+                <div class="stat">Combo: <span id="combo">0</span>x</div>
+            </div>
+            <button id="reset-button" class="button-secondary">Reset Game</button>
+        </div>
+
+        <div class="game-grid">
+            <!-- 3x3 grid for jerry cans -->
+            <div class="grid-cell" data-index="0"></div>
+            <div class="grid-cell" data-index="1"></div>
+            <div class="grid-cell" data-index="2"></div>
+            <div class="grid-cell" data-index="3"></div>
+            <div class="grid-cell" data-index="4"></div>
+            <div class="grid-cell" data-index="5"></div>
+            <div class="grid-cell" data-index="6"></div>
+            <div class="grid-cell" data-index="7"></div>
+            <div class="grid-cell" data-index="8"></div>
+        </div>
+    </div>
+
+    <!-- End Screen -->
+    <div id="end-screen" class="screen">
+        <div class="trophy">🏆</div>
+        <h2>Game Over!</h2>
+        <div class="final-score">Score: <span id="final-score">0</span></div>
+        <p class="impact">You helped provide clean water to <span id="final-people-served">0</span> people!</p>
+        <p class="fact">771 million people lack access to safe water</p>
+        <div class="end-buttons">
+            <button id="play-again" class="button-primary">PLAY AGAIN</button>
+            <button id="share" class="button-secondary">SHARE</button>
+            <a href="https://www.charitywater.org/donate" target="_blank" class="button-donate">DONATE to charity: water</a>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

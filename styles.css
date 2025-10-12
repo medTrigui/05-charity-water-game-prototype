@@ -1,15 +1,265 @@
-/* Charity: water Brand Colors
+/* Charity: water Brand Colors */
+:root {
+    --yellow: #FFC907;
+    --blue: #2E9DF7;
+    --light-blue: #8BD1CB;
+    --green: #4FCB53;
+    --orange: #FF902A;
+    --red: #F5402C;
+    --dark-green: #159A48;
+    --pink: #F16061;
+    --brown: #8B4513;
+}
 
-Primary Colors:
-- Yellow:     #FFC907
-- Blue:       #2E9DF7
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-Secondary Colors:
-- Light Blue: #8BD1CB
-- Green:      #4FCB53
-- Orange:     #FF902A
-- Red:        #F5402C
-- Dark Green: #159A48
-- Pink:       #F16061
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-*/
+/* Screen Management */
+.screen {
+    display: none;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    text-align: center;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Start Screen */
+.logo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    background-color: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.water-drop {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    clip-path: path('M30 0 C30 0 0 30 0 50 C0 77.5 30 90 30 90 C30 90 60 77.5 60 50 C60 30 30 0 30 0');
+}
+
+h1 {
+    color: var(--yellow);
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.instructions {
+    margin: 30px auto;
+    max-width: 400px;
+    text-align: left;
+}
+
+.instructions ul {
+    list-style-type: none;
+}
+
+.instructions li {
+    margin: 10px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.instructions li:before {
+    content: "•";
+    color: var(--yellow);
+    position: absolute;
+    left: 0;
+}
+
+/* Game Screen */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.stats-bar {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.stat {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    aspect-ratio: 1;
+}
+
+.grid-cell {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.grid-cell:hover {
+    transform: scale(1.02);
+}
+
+/* End Screen */
+.trophy {
+    font-size: 4em;
+    margin: 20px 0;
+}
+
+.final-score {
+    font-size: 2em;
+    color: var(--yellow);
+    margin: 20px 0;
+}
+
+.impact {
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+.fact {
+    color: var(--blue);
+    margin: 20px 0;
+}
+
+/* Buttons */
+.button-primary {
+    background-color: var(--yellow);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.button-secondary {
+    background-color: white;
+    color: var(--yellow);
+    border: 2px solid var(--yellow);
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.button-donate {
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+button:hover, .button-donate:hover {
+    transform: scale(1.05);
+}
+
+.end-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/* Jerry Can and Obstacle Styles */
+.jerry-can, .storm-cloud {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.jerry-can.yellow {
+    background-color: var(--yellow);
+}
+
+.jerry-can.brown {
+    background-color: var(--brown);
+}
+
+.storm-cloud {
+    background-color: #666;
+    border-radius: 50%;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Confetti Container */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--yellow);
+    opacity: 0;
+}
+
+@keyframes confettiFall {
+    0% {
+        opacity: 1;
+        transform: translateY(-100%) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
