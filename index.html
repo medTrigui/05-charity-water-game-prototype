@@ -3,28 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Quest - charity: water Game</title>
+    <title>Water Quest by charity: water</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Header with charity: water branding -->
+    <header class="main-header">
+        <a href="https://www.charitywater.org" target="_blank" class="charity-brand">
+            charity: water
+        </a>
+    </header>
+
     <!-- Start Screen -->
     <div id="start-screen" class="screen active">
         <div class="logo">
-            <!-- Yellow circle with water drop icon placeholder -->
             <div class="water-drop"></div>
         </div>
         <h1>Water Quest</h1>
-        <p class="tagline">Help provide clean water for everyone!</p>
+        <p class="tagline">Help provide clean water to those in need!</p>
+        <p class="game-by">A charity: water game</p>
+        
         <div class="instructions">
             <ul>
-                <li>Click yellow jerry cans to collect clean water (+10 points)</li>
-                <li>Avoid brown jerry cans with dirty water (-5 points)</li>
-                <li>Watch out for storm clouds! They'll wash away points!</li>
+                <li>Click yellow gallons to collect clean water (+10 points)</li>
+                <li>Avoid brown gallons with dirty water (-5 points)</li>
+                <li>Watch out for storms! (-15 points)</li>
                 <li>Build combos for bonus points</li>
-                <li>Help as many people as you can in 60 seconds!</li>
+                <li>Help as many people as you can before time runs out!</li>
             </ul>
         </div>
+
+        <div class="difficulty-select">
+            <h3>Select Difficulty</h3>
+            <div class="difficulty-buttons">
+                <button class="difficulty-btn" data-difficulty="easy">Easy Mode</button>
+                <button class="difficulty-btn" data-difficulty="normal">Normal Mode</button>
+                <button class="difficulty-btn" data-difficulty="hard">Hard Mode</button>
+            </div>
+        </div>
+
         <button id="start-button" class="button-primary">START GAME</button>
+    </div>
     </div>
 
     <div id="game-screen" class="screen">
@@ -38,17 +57,21 @@
             <button id="reset-button" class="button-secondary">Reset Game</button>
         </div>
 
-        <div class="game-grid">
-            <!-- 3x3 grid for jerry cans -->
-            <div class="grid-cell" data-index="0"></div>
-            <div class="grid-cell" data-index="1"></div>
-            <div class="grid-cell" data-index="2"></div>
-            <div class="grid-cell" data-index="3"></div>
-            <div class="grid-cell" data-index="4"></div>
-            <div class="grid-cell" data-index="5"></div>
-            <div class="grid-cell" data-index="6"></div>
-            <div class="grid-cell" data-index="7"></div>
-            <div class="grid-cell" data-index="8"></div>
+        <div class="game-environment">
+            <div class="water-bg"></div>
+            <div class="game-grid">
+                <!-- 3x3 grid for water gallons -->
+                <div class="grid-cell" data-index="0"></div>
+                <div class="grid-cell" data-index="1"></div>
+                <div class="grid-cell" data-index="2"></div>
+                <div class="grid-cell" data-index="3"></div>
+                <div class="grid-cell" data-index="4"></div>
+                <div class="grid-cell" data-index="5"></div>
+                <div class="grid-cell" data-index="6"></div>
+                <div class="grid-cell" data-index="7"></div>
+                <div class="grid-cell" data-index="8"></div>
+            </div>
+            <div class="water-ripples"></div>
         </div>
     </div>
 
@@ -56,15 +79,27 @@
     <div id="end-screen" class="screen">
         <div class="trophy">🏆</div>
         <h2>Game Over!</h2>
-        <div class="final-score">Score: <span id="final-score">0</span></div>
-        <p class="impact">You helped provide clean water to <span id="final-people-served">0</span> people!</p>
-        <p class="fact">771 million people lack access to safe water</p>
+        <div class="final-stats"></div>
+        <div class="impact-section">
+            <p class="impact">You helped provide clean water to <span id="final-people-served">0</span> people!</p>
+            <p class="fact">771 million people lack access to safe water</p>
+            <div class="fact-box">
+                <h3>Did You Know?</h3>
+                <p>Every $40 donated to charity: water can provide one person with clean water.</p>
+            </div>
+        </div>
         <div class="end-buttons">
             <button id="play-again" class="button-primary">PLAY AGAIN</button>
-            <button id="share" class="button-secondary">SHARE</button>
+            <button id="share" class="button-secondary">SHARE RESULTS</button>
             <a href="https://www.charitywater.org/donate" target="_blank" class="button-donate">DONATE to charity: water</a>
         </div>
     </div>
+
+    <footer class="charity-footer">
+        <a href="https://www.charitywater.org" target="_blank">Visit charity: water</a>
+        <a href="https://www.charitywater.org/our-work" target="_blank">Our Work</a>
+        <a href="https://www.charitywater.org/donate" target="_blank">Donate</a>
+    </footer>
 
     <script src="script.js"></script>
 </body>

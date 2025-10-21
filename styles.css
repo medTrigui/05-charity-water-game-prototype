@@ -11,6 +11,9 @@
     --brown: #8B4513;
 }
 
+/* Import charity: water fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -19,12 +22,37 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background-color: #ffffff;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding: 80px 20px 100px;
+}
+
+/* Header Styles */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.charity-brand {
+    color: var(--yellow);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.2rem;
+    letter-spacing: -0.5px;
+}
+
+.charity-brand:hover {
+    color: var(--dark-green);
 }
 
 /* Screen Management */
@@ -32,8 +60,12 @@ body {
     display: none;
     width: 100%;
     max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
     text-align: center;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .screen.active {
@@ -42,73 +74,859 @@ body {
 
 /* Start Screen */
 .logo {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     margin: 0 auto 20px;
-    background-color: var(--yellow);
+    background: var(--yellow);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 8px 32px rgba(255, 201, 7, 0.3);
+    animation: gentleBounce 3s ease-in-out infinite;
 }
 
 .water-drop {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     background-color: white;
-    clip-path: path('M30 0 C30 0 0 30 0 50 C0 77.5 30 90 30 90 C30 90 60 77.5 60 50 C60 30 30 0 30 0');
+    clip-path: path('M35 0 C35 0 0 35 0 60 C0 90 35 105 35 105 C35 105 70 90 70 60 C70 35 35 0 35 0');
+    transform: translateY(-2px);
+}
+
+@keyframes gentleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 h1 {
     color: var(--yellow);
-    font-size: 3em;
-    margin-bottom: 10px;
+    font-size: 3.5em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 .tagline {
+    font-size: 1.4em;
+    color: #444;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.game-by {
     font-size: 1.2em;
+    color: var(--dark-green);
     margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
+h1 {
+    color: var(--yellow);
+    font-size: clamp(3em, 10vw, 4.5em);
+    font-weight: 700;
+    line-height: 1.1;
+    text-shadow: 0 4px 12px rgba(255, 201, 7, 0.3);
+    letter-spacing: -0.02em;
+}
+
+.game-by {
+    color: var(--dark-green);
+    font-size: 1.4em;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.tagline {
+    font-size: clamp(1.2em, 4vw, 1.5em);
+    color: #444;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.4;
 }
 
 .instructions {
-    margin: 30px auto;
-    max-width: 400px;
-    text-align: left;
+    max-width: 500px;
+    margin: 0 auto 30px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .instructions ul {
     list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 .instructions li {
-    margin: 10px 0;
-    padding-left: 20px;
-    position: relative;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    color: #444;
+    font-size: 1.1em;
+    line-height: 1.4;
+    transition: transform 0.2s ease;
 }
 
-.instructions li:before {
-    content: "•";
+.instructions li:hover {
+    transform: translateX(5px);
+    background: #f0f0f0;
+}
+
+.instructions li:last-child {
+    margin-bottom: 0;
+}
+
+.difficulty-select {
+    max-width: 500px;
+    margin: 0 auto 30px;
+    text-align: center;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.difficulty-select h3 {
+    color: var(--dark-green);
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.difficulty-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+/* Difficulty Card Styles */
+.difficulty-buttons {
+    display: grid;
+    gap: 15px;
+}
+
+.difficulty-btn {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.difficulty-btn:hover {
+    transform: translateX(5px);
+    background: white;
+    border-color: var(--yellow);
+}
+
+.difficulty-btn.selected {
+    background: var(--yellow);
+    color: white;
+    border-color: var(--yellow);
+    transform: scale(1.02);
+}
+
+.diff-icon {
+    font-size: 1.5em;
+}
+
+.diff-name {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.diff-time {
+    font-weight: 700;
     color: var(--yellow);
-    position: absolute;
+}
+
+.difficulty-btn.selected .diff-time {
+    color: white;
+}
+
+/* Animations */
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+@keyframes rippleEffect {
+    0% {
+        transform: translate(-50%, -50%) scale(0.3);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+/* Difficulty Selection */
+.difficulty-select {
+    margin: 20px 0;
+}
+
+.difficulty-select h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.difficulty-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.button-primary,
+.button-secondary,
+.difficulty-btn,
+.button-donate {
+    padding: 12px 25px;
+    border: 2px solid var(--yellow);
+    background: white;
+    color: var(--yellow);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.button-primary {
+    background: var(--yellow);
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    min-width: 200px;
+}
+
+.button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 201, 7, 0.3);
+}
+
+.button-primary:active {
+    transform: translateY(0);
+}
+
+.difficulty-btn {
+    flex: 1;
+    padding: 15px 25px;
+    background: white;
+    border: 2px solid var(--yellow);
+    color: var(--yellow);
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.difficulty-btn:hover {
+    background: var(--yellow);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 201, 7, 0.2);
+}
+
+.difficulty-btn.selected {
+    background: var(--yellow);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 201, 7, 0.2);
+}
+
+@media (max-width: 600px) {
+    .difficulty-buttons {
+        flex-direction: column;
+        padding: 0;
+    }
+    
+    .difficulty-btn {
+        width: 100%;
+        min-width: 0;
+    }
+    
+    .difficulty-select {
+        margin: 0 20px 30px;
+    }
+    
+    .instructions {
+        margin: 0 20px 30px;
+    }
+}
+
+.button-donate {
+    background: var(--dark-green);
+    color: white;
+    min-width: 200px;
+}
+
+.button-donate:hover {
+    background: var(--green);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 203, 83, 0.3);
+}
+
+.difficulty-btn.selected {
+    background: var(--yellow);
+    color: white;
+}
+
+.difficulty-info {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.difficulty-info p {
+    background: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.button-secondary:hover {
+    border-color: var(--dark-green);
+    color: var(--dark-green);
+    transform: translateY(-2px);
+}
+
+/* Milestone Messages */
+.milestone-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 201, 7, 0.9);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    animation: fadeInOut 2s ease-in-out forwards;
+    z-index: 1000;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+}
+
+/* Footer */
+.charity-footer {
+    position: fixed;
+    bottom: 0;
     left: 0;
+    width: 100%;
+    background: white;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.charity-footer a {
+    color: var(--yellow);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.charity-footer a:hover {
+    color: var(--dark-green);
+}
+
+/* Game Environment */
+.game-environment {
+    position: relative;
+    background: linear-gradient(180deg, #E3F2FD 0%, #BBDEFB 100%);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Water Background Effects */
+.water-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    pointer-events: none;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.3) 0%, transparent 20%),
+        radial-gradient(circle at 90% 50%, rgba(255,255,255,0.2) 0%, transparent 25%),
+        radial-gradient(circle at 30% 80%, rgba(255,255,255,0.3) 0%, transparent 15%);
+    animation: waterBg 10s linear infinite;
+}
+
+/* Responsive Game Grid */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.grid-cell {
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+.grid-cell:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.grid-cell::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+    pointer-events: none;
+}
+
+@keyframes waterBg {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+.grid-cell.clean-water {
+    background: var(--yellow);
+    box-shadow: 0 4px 12px rgba(255, 201, 7, 0.3);
+}
+
+.grid-cell.dirty-water {
+    background: var(--brown);
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+}
+
+.grid-cell.storm {
+    background: #4a5568;
+    box-shadow: 0 4px 12px rgba(74, 85, 104, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 60px 15px 80px;
+    }
+
+    .screen {
+        padding: 15px;
+    }
+
+    .instructions {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .difficulty-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .difficulty-btn {
+        width: 100%;
+    }
+
+    .game-grid {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .charity-footer {
+        padding: 10px;
+    }
+
+    .charity-footer a {
+        margin: 0 10px;
+        font-size: 0.9em;
+    }
+}
+
+/* Points Animation */
+.points-popup {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 1.5em;
+    pointer-events: none;
+    animation: pointsFloat 1s ease-out forwards;
+    z-index: 1000;
+}
+
+@keyframes pointsFloat {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -150%) scale(1.2);
+    }
+}
+
+/* Game Elements */
+.game-element {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
+    perspective: 1000px;
+}
+
+.game-element:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+/* Water Gallon Styling */
+.water-gallon {
+    width: 80%;
+    height: 80%;
+    position: relative;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.clean .water-gallon {
+    background: rgba(255, 201, 7, 0.9);
+    box-shadow: 0 4px 20px rgba(255, 201, 7, 0.3);
+}
+
+.dirty .water-gallon {
+    background: rgba(139, 69, 19, 0.9);
+    box-shadow: 0 4px 20px rgba(139, 69, 19, 0.3);
+}
+
+.storm .water-gallon {
+    background: rgba(74, 85, 104, 0.9);
+    box-shadow: 0 4px 20px rgba(74, 85, 104, 0.3);
+}
+
+/* Gallon Details */
+.gallon-handle {
+    position: absolute;
+    top: 20%;
+    right: -10px;
+    width: 20px;
+    height: 40%;
+    background: inherit;
+    border-radius: 0 4px 4px 0;
+    transform: translateZ(10px);
+}
+
+.gallon-cap {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 10px;
+    background: inherit;
+    border-radius: 4px 4px 0 0;
+}
+
+/* Water Wave Effect */
+.water-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 0 0 8px 8px;
+    animation: waterWave 2s ease-in-out infinite;
+}
+
+.clean .water-wave {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.dirty .water-wave {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.storm .water-wave {
+    background: rgba(255, 255, 255, 0.2);
+    animation: stormWave 1s ease-in-out infinite;
+}
+
+/* Splash Effect */
+.splash-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.droplet {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0;
+}
+
+.clean .droplet {
+    color: var(--yellow);
+}
+
+.dirty .droplet {
+    color: var(--brown);
+}
+
+.storm .droplet {
+    color: #4a5568;
+}
+
+/* Water Animations */
+@keyframes waterWave {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-5px) rotate(1deg);
+    }
+}
+
+@keyframes stormWave {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(-2deg);
+    }
+}
+
+@keyframes splash {
+    0% {
+        transform: translate(0, 0) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Element Animations */
+@keyframes elementAppear {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes elementDisappear {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes elementHit {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+/* End Screen Stats */
+.game-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 30px auto;
+    max-width: 800px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.game-stats.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stat-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stat-label {
+    display: block;
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--yellow);
+}
+
+.impact-section {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.fact-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.fact-box h3 {
+    color: var(--dark-green);
+    margin-bottom: 10px;
 }
 
 /* Game Screen */
 .game-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 15px;
     margin-bottom: 20px;
-    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .game-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 
 .stats-bar {
     flex-grow: 1;
-    display: flex;
-    justify-content: space-around;
-    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stat {
+    background: white;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-weight: 600;
+}
+
+.stat span {
+    color: var(--yellow);
+    font-weight: 700;
 }
 
 .stat {
